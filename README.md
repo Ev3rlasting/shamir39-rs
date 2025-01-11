@@ -19,7 +19,7 @@ This project is a Rust implementation of Shamir's Secret Sharing scheme combined
 ## Setup
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Ev3rlasting/shamir39-rs
    cd shamir39-rs
    ```
 2. Build the project:
