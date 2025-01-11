@@ -27,21 +27,7 @@ impl Shamir39Share {
 
 impl Display for Shamir39Share {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let word_list = match self.language {
-            bip39::Language::English => bip39::Language::English.word_list(),
-            bip39::Language::SimplifiedChinese => bip39::Language::SimplifiedChinese.word_list(),
-            bip39::Language::TraditionalChinese => bip39::Language::TraditionalChinese.word_list(),
-            bip39::Language::Czech => bip39::Language::Czech.word_list(),
-            bip39::Language::French => bip39::Language::French.word_list(),
-            bip39::Language::Italian => bip39::Language::Italian.word_list(),
-            bip39::Language::Japanese => bip39::Language::Japanese.word_list(),
-            bip39::Language::Korean => bip39::Language::Korean.word_list(),
-            bip39::Language::Portuguese => bip39::Language::Portuguese.word_list(),
-            bip39::Language::Spanish => bip39::Language::Spanish.word_list(),
-        };
-
-        let index_word = word_list[self.index];
-
+        let index_word = self.language.word_list()[self.index];
         write!(f, "{} {}", index_word, self.share)
     }
 }
