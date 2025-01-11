@@ -5,8 +5,6 @@ edition = "2021"
 
 [dependencies]
 bip39 = { version = "2.1.0", features = ["chinese-simplified", "chinese-traditional", "czech", "french", "italian", "japanese", "korean", "portuguese", "spanish"] }
-hex = "0.4.3"
-shamir = "2.0.0"
 rand = "0.7.3"
 shamir_secret_sharing = "0.1.1"
 num-bigint = "0.2.6"

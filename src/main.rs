@@ -170,7 +170,6 @@ fn main() {
             let share_amount: usize = share_amount_input.trim().parse().unwrap_or(5);
 
             let entropy = generate_secure_entropy(32);
-            println!("{:?}", entropy);
             let mnemonic = Mnemonic::from_entropy_in(language, &entropy).expect("valid entropy");
             println!("Original mnemonic: {}", mnemonic);
 
