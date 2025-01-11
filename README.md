@@ -1,6 +1,6 @@
 # Shamir39-rs
 
-This project is a Rust implementation of Shamir's Secret Sharing scheme combined with BIP-39 mnemonics. It allows you to split a secret into multiple shares and reconstruct it using a subset of those shares.
+This project is a Rust implementation of [Shamir's Secret Sharing scheme](https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing) combined with BIP-39 mnemonics. It allows you to split a secret into multiple shares and reconstruct it using a subset of those shares.
 
 ## Warning
 
