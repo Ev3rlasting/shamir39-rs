@@ -1,5 +1,7 @@
 # Shamir39-rs
 
+[![CI](https://github.com/Ev3rlasting/shamir39-rs/actions/workflows/ci.yml/badge.svg)](https://github.com/Ev3rlasting/shamir39-rs/actions/workflows/ci.yml)
+
 This project is a Rust implementation of [Shamir's Secret Sharing scheme](https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing) combined with BIP-39 mnemonics. It allows you to split a secret into multiple shares and reconstruct it using a subset of those shares.
 
 ## Warning
