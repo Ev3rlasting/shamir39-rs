@@ -94,6 +94,11 @@ fn reconstruct_secret(
     bytes_to_mnemonic(&secret_bytes, language)
 }
 
+fn convert_mnemonic_language(mnemonic: &Mnemonic, target_language: bip39::Language) -> Mnemonic {
+    let entropy = mnemonic.to_entropy();
+    Mnemonic::from_entropy_in(target_language, &entropy).expect("Valid entropy")
+}
+
 fn main() {
     println!("Select Language");
     println!("1. English");
@@ -130,6 +135,7 @@ fn main() {
     println!("1. Generate a new mnemonic");
     println!("2. Apply SSS on an existing mnemonic");
     println!("3. Reconstruct mnemonic by providing SSS shares");
+    println!("4. Convert a mnemonic to a target language");
     print!("Enter the number corresponding to your choice: ");
     io::stdout().flush().unwrap();
 
@@ -234,6 +240,47 @@ fn main() {
 
             let reconstructed = reconstruct_secret(&shares, num_shares, language);
             println!("Reconstructed mnemonic: {}", reconstructed);
+        }
+        4 => {
+            println!("Select the source language of your mnemonic:");
+            println!("1. English");
+            println!("2. Simplified Chinese");
+            println!("3. Traditional Chinese");
+            println!("4. Czech");
+            println!("5. French");
+            println!("6. Italian");
+            println!("7. Japanese");
+            println!("8. Korean");
+            println!("9. Portuguese");
+            println!("10. Spanish");
+            print!("Enter the number corresponding to your choice (default is English): ");
+            io::stdout().flush().unwrap();
+
+            let mut source_language_choice = String::new();
+            io::stdin().read_line(&mut source_language_choice).unwrap();
+            let source_language_choice: usize = source_language_choice.trim().parse().unwrap_or(1);
+
+            let source_language = match source_language_choice {
+                2 => bip39::Language::SimplifiedChinese,
+                3 => bip39::Language::TraditionalChinese,
+                4 => bip39::Language::Czech,
+                5 => bip39::Language::French,
+                6 => bip39::Language::Italian,
+                7 => bip39::Language::Japanese,
+                8 => bip39::Language::Korean,
+                9 => bip39::Language::Portuguese,
+                10 => bip39::Language::Spanish,
+                _ => bip39::Language::English,
+            };
+
+            print!("Enter your mnemonic (split by space): ");
+            io::stdout().flush().unwrap();
+            let mut mnemonic_input = String::new();
+            io::stdin().read_line(&mut mnemonic_input).unwrap();
+            let mnemonic = Mnemonic::parse_in(source_language, mnemonic_input.trim()).expect("valid mnemonic");
+
+            let converted_mnemonic = convert_mnemonic_language(&mnemonic, language);
+            println!("Converted mnemonic: {}", converted_mnemonic);
         }
         _ => {
             println!("Invalid choice, defaulting to generating a new mnemonic.");

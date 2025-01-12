@@ -14,6 +14,7 @@ This project is a Rust implementation of [Shamir's Secret Sharing scheme](https:
 - Apply Shamir's Secret Sharing (SSS) on an existing mnemonic.
 - Reconstruct a mnemonic from provided SSS shares.
 - Supports multiple languages under BIP-39 standards.
+- Convert a mnemonic to a target language.
 
 ## Prerequisites
 - Rust and Cargo installed on your system.
@@ -97,6 +98,43 @@ Enter share 2: 在 强 参 顿 怕 量 份 掩 珍 溶 株 续 轴 排 司 降 �
 Enter share 3: 一 望 斑 研 某 活 摇 离 维 酷 吉 钻 抬 士 味 仗 已 树 元 碳 问 盾 恢 怀 株
 
 Reconstructed mnemonic: 密 勇 诉 灌 高 日 瓦 从 纠 纹 方 喝 言 七 推 愿 患 黎 浇 又 五 仓 甘 线
+```
+
+Here's an example of converting a mnemonic to a target language:
+
+```
+Select Language
+1. English
+2. Simplified Chinese
+3. Traditional Chinese
+4. Czech
+5. French
+6. Italian
+7. Japanese
+8. Korean
+9. Portuguese
+10. Spanish
+Enter the number corresponding to your choice (default is English): 1
+Choose an option:
+1. Generate a new mnemonic
+2. Apply SSS on an existing mnemonic
+3. Reconstruct mnemonic by providing SSS shares
+4. Convert a mnemonic to a target language
+Enter the number corresponding to your choice: 4
+Select the source language of your mnemonic:
+1. English
+2. Simplified Chinese
+3. Traditional Chinese
+4. Czech
+5. French
+6. Italian
+7. Japanese
+8. Korean
+9. Portuguese
+10. Spanish
+Enter the number corresponding to your choice (default is English): 2
+Enter your mnemonic (split by space): 密 勇 诉 灌 高 日 瓦 从 纠 纹 方 喝 言 七 推 愿 患 黎 浇 又 五 仓 甘 线
+Converted mnemonic: door own flee round antenna auction lobster around since purchase alley random economy car divorce goddess step park swap banner bless rhythm phone baby
 ```
 
 ## Testing
