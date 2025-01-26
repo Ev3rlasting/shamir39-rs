@@ -1,11 +1,13 @@
 use bip39::Mnemonic;
 use num_bigint::BigInt;
-use rand::{thread_rng, RngCore};
+use rand::RngCore;
 use shamir_secret_sharing::ShamirSecretSharing as SSS;
 use std::{
     fmt::Display,
     io::{self, Write},
 };
+use rand::rngs::OsRng;
+use zeroize::Zeroizing;
 
 const PRIME_HEX: &str = "fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f";
 #[derive(Clone)]
@@ -32,9 +34,9 @@ impl Display for Shamir39Share {
     }
 }
 
-fn generate_secure_entropy(byte_length: usize) -> Vec<u8> {
-    let mut entropy = vec![0u8; byte_length];
-    thread_rng().fill_bytes(&mut entropy);
+fn generate_secure_entropy(byte_length: usize) -> Zeroizing<Vec<u8>> {
+    let mut entropy = Zeroizing::new(vec![0u8; byte_length]);
+    OsRng.fill_bytes(&mut entropy);
     entropy
 }
 fn bytes_to_mnemonic(bytes: &[u8], language: bip39::Language) -> Mnemonic {
