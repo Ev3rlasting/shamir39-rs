@@ -1,11 +1,22 @@
 [package]
 name = "shamir39-rs"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
+rust-version = "1.74"
+description = "Split and recover BIP-39 mnemonics with Shamir secret sharing"
+license = "MIT"
+repository = "https://github.com/Ev3rlasting/shamir39-rs"
+homepage = "https://github.com/Ev3rlasting/shamir39-rs"
+readme = "README.md"
+keywords = ["shamir", "bip39", "secret-sharing", "wallet"]
+categories = ["cryptography", "command-line-utilities"]
+include = ["src/**/*.rs", "Cargo.toml", "README.md", "LICENSE", "CHANGELOG.md"]
 
 [dependencies]
-bip39 = { version = "2.1.0", features = ["chinese-simplified", "chinese-traditional", "czech", "french", "italian", "japanese", "korean", "portuguese", "spanish"] }
+bip39 = { version = "2.2.2", features = ["chinese-simplified", "chinese-traditional", "czech", "french", "italian", "japanese", "korean", "portuguese", "spanish"] }
 rand = "0.7.3"
 shamir_secret_sharing = "0.1.1"
 num-bigint = "0.2.6"
 zeroize = "1.8.1"
+rpassword = "7.4.0"
+crc32fast = "1.5.0"
